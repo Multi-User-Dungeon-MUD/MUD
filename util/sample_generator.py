@@ -52,7 +52,7 @@ class World:
         self.height = size_y
         for i in range( len(self.grid) ):
             self.grid[i] = [None] * size_x
-
+        
         # Start from lower-left corner (0,0)
         x = -1 # (this will become 0 on the first step)
         y = 0
