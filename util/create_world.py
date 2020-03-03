@@ -45,6 +45,13 @@ Room.objects.all().delete()
 #   p.currentRoom=r_outside.id
 #   p.save()
 
+#Objects
+#objects = [[Room(title="some,numbers", description= "dungeon")] X10]
+
+#Movements
+#movements = [[somenumber, somenumber, somenumber, somenumber, somenumber, somenumber, somenumber, somenumber, somenumber, somenumber] X10]
+
+
 def conNorth(index_1, index_2, object_array):
   object_array[index_1][index_2].connectRooms(object_array[index_1-1][index_2], "n")
 def conSouth(index_1, index_2, object_array):
@@ -111,3 +118,9 @@ def map_room(room_movement_array, room_object_array):
         conWest(i,j, room_object_array)
       elif room_movement_array[i][j] == 15: 
         pass
+
+#Map Rooms
+#map_room(movements, objects)
+
+#Connect Objects to Rooms
+#objects[somenumber][somenumber].connectRooms(objects[somenumber][somenumber], "applicable direction")
