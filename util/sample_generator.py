@@ -53,6 +53,7 @@ class World:
         for i in range( len(self.grid) ):
             self.grid[i] = [None] * size_x
         
+        print(self.grid)
         # Start from lower-left corner (0,0)
         x = -1 # (this will become 0 on the first step)
         y = 0
@@ -152,11 +153,38 @@ class World:
 
 
 w = World()
-num_rooms = 44
-width = 8
-height = 7
+num_rooms = 100
+width = 20
+height = 5
 w.generate_rooms(width, height, num_rooms)
 w.print_rooms()
 
 
 print(f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {num_rooms}\n")
+
+# cords = []
+
+# class Foo:
+#     def __init__(self, d, h):
+#         self.d = d
+#         self.h = h
+
+#     def __repr__(self):
+#         return 'x: ' + f'{self.d}' + ', ' + 'y: ' +f'{self.h}'
+
+# counter = 0
+# for i in range(10):
+#     print(counter)
+#     if counter % 2 == 0:
+#         for j in range(10):
+#             cords.append({Foo(i, j)})
+            
+#     else:
+#         for j in range(9, -1, -1):
+#             cords.append({Foo(i, j)})
+#     counter += 1
+            
+
+    
+# print(cords)
+
