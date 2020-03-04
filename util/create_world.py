@@ -63,12 +63,11 @@ r_hall.connectRooms(r_treasure, "s")
 r_hall.connectRooms(r_dead_end, "e")
 r_dead_end.connectRooms(r_hall, "w")
 
-r_dead_end.connectRooms(r_stairs, "e")
-r_stairs.connectRooms(r_dead_end, "w")
-
-
 r_dead_end.connectRooms(r_balcony, "s")
 r_balcony.connectRooms(r_dead_end, "n")
+
+r_dead_end.connectRooms(r_stairs, "e")
+r_stairs.connectRooms(r_dead_end, "w")
 
 r_stairs.connectRooms(r_cave, "n")
 r_cave.connectRooms(r_stairs, "s")
