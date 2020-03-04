@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 import uuid
 
+
 class Room(models.Model):
     title = models.CharField(max_length=50, default="DEFAULT TITLE")
     description = models.CharField(max_length=500, default="DEFAULT DESCRIPTION")
@@ -14,7 +15,6 @@ class Room(models.Model):
     w_to = models.IntegerField(default=0)
     x = models.IntegerField(default=0)
     y = models.IntegerField(default=0)
-
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
         try:
@@ -34,7 +34,6 @@ class Room(models.Model):
                 self.w_to = destinationRoomID
                 self.y = destinationRoom.y
                 self.x = destinationRoom.x + 1
-
             else:
                 print("Invalid direction")
                 return

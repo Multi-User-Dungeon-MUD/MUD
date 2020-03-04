@@ -21,11 +21,17 @@ r_treasure = Room(title="Treasure Chamber", description="""You've found the long
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south.""")
 
-r_outside.save()
+r_hall = Room(title="hall", description="""As passage.""")
+
+r_dead_end = Room(title="Dead End", description="""Nowhere to go.""")
+
+
 r_foyer.save()
 r_overlook.save()
 r_narrow.save()
 r_treasure.save()
+r_hall.save()
+r_dead_end.save()
 
 # Link rooms together
 r_outside.connectRooms(r_foyer, "n")
@@ -39,6 +45,12 @@ r_narrow.connectRooms(r_foyer, "w")
 
 r_narrow.connectRooms(r_treasure, "n")
 r_treasure.connectRooms(r_narrow, "s")
+
+r_treasure.connectRooms(r_hall, "n")
+r_hall.connectRooms(r_treasure, "s")
+
+r_hall.connectRooms(r_dead_end, "e")
+r_dead_end.connectRooms(r_hall, "w")
 
 players=Player.objects.all()
 for p in players:

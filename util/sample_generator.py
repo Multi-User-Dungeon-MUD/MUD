@@ -53,6 +53,7 @@ class World:
         for i in range( len(self.grid) ):
             self.grid[i] = [None] * size_x
         
+        print(self.grid)
         # Start from lower-left corner (0,0)
         x = -1 # (this will become 0 on the first step)
         y = 0
@@ -152,11 +153,123 @@ class World:
 
 
 w = World()
-num_rooms = 44
-width = 8
-height = 7
+num_rooms = 100
+width = 20
+height = 5
 w.generate_rooms(width, height, num_rooms)
 w.print_rooms()
 
 
 print(f"\n\nWorld\n  height: {height}\n  width: {width},\n  num_rooms: {num_rooms}\n")
+
+# cords = []
+
+
+
+# counter = 0
+# for i in range(10):
+#     print(counter)
+#     if counter % 2 == 0:
+#         for j in range(10):
+#             cords.append({Foo(i, j)})
+            
+#     else:
+#         for j in range(9, -1, -1):
+#             cords.append({Foo(i, j)})
+#     counter += 1
+            
+
+    
+# print(cords)
+
+# class Foo:
+#     def __init__(self, d, h, color):
+#         self.d = d
+#         self.h = h
+#         self.color = color
+
+#     def __repr__(self):
+#         return 'x: ' + f'{self.d}' + ', ' + 'y: ' +f'{self.h}' + ', ' + 'color: ' + f'{self.color}'
+
+# data = [["A1", "A2", 0],
+# ["A1", "B2", 1],
+# ["A1", "C2", 2],
+# ["A1", "D2", 3],
+# ["A1", "I2", 8],
+# ["A1", "J2", 9],
+# ["B1", "A2", 1],
+# ["B1", "B2", 1],
+# ["B1", "C2", 1],
+# ["B1", "D2", 1],
+# ["B1", "E2", 1],
+# ["B1", "F2", 1],
+# ["B1", "G2", 1],
+# ["B1", "H2", 1],
+# ["B1", "J2", 1],
+# ["C1", "A2", 2],
+# ["C1", "D2", 2],
+# ["C1", "E2", 2],
+# ["C1", "F2", 1],
+# ["C1", "G2", 2],
+# ["C1", "H2", 2],
+# ["C1", "I2", 2],
+# ["C1", "J2", 3],
+# ["D1", "C2", 3],
+# ["D1", "D2", 3],
+# ["D1", "G2", 1],
+# ["D1", "H2", 3],
+# ["D1", "I2", 1],
+# ["D1", "J2", 3],
+# ["E1", "A2", 4],
+# ["E1", "B2", 4],
+# ["E1", "D2", 4],
+# ["E1", "E2", 4],
+# ["E1", "G2", 4],
+# ["E1", "H2", 4],
+# ["E1", "I2", 4],
+# ["F1", "A2", 5],
+# ["F1", "B2", 5],
+# ["F1", "C2", 5],
+# ["F1", "D2", 5],
+# ["F1", "E2", 5],
+# ["F1", "F2", 5],
+# ["F1", "G2", 5],
+# ["F1", "H2", 5],
+# ["F1", "I2", 5],
+# ["F1", "J2", 5],
+# ["G1", "A2", 6],
+# ["G1", "C2", 6],
+# ["G1", "D2", 6],
+# ["G1", "G2", 6],
+# ["G1", "H2", 6],
+# ["G1", "I2", 6],
+# ["H1", "A2", 7],
+# ["H1", "C2", 7],
+# ["H1", "D2", 7],
+# ["H1", "E2", 7],
+# ["H1", "F2", 7],
+# ["H1", "G2", 7],
+# ["H1", "H2", 7],
+# ["H1", "J2", 7],
+# ["I1", "A2", 8],
+# ["I1", "C2", 8],
+# ["I1", "D2", 8],
+# ["I1", "E2", 8],
+# ["I1", "F2", 8],
+# ["I1", "G2", 8],
+# ["I1", "H2", 8],
+# ["I1", "I2", 8],
+# ["I1", "J2", 8],
+# ["J1", "A2", 9],
+# ["J1", "C2", 9],
+# ["J1", "D2", 9],
+# ["J1", "F2", 9],
+# ["J1", "G2", 9],
+# ["J1", "H2", 9],
+# ["J1", "I2", 9],
+# ["J1", "J2", 9]]
+
+# for i in range(len(data)):
+#     data[i] = {Foo(data[i][0], data[i][1], data[i][2])}
+
+# print(data)
