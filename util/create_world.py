@@ -21,11 +21,25 @@ Room.objects.all().delete()
 # chamber! Sadly, it has already been completely emptied by
 # earlier adventurers. The only exit is to the south.""")
 
+<<<<<<< HEAD
 # r_outside.save()
 # r_foyer.save()
 # r_overlook.save()
 # r_narrow.save()
 # r_treasure.save()
+=======
+r_hall = Room(title="hall", description="""As passage.""")
+
+r_dead_end = Room(title="Dead End", description="""Nowhere to go.""")
+
+
+r_foyer.save()
+r_overlook.save()
+r_narrow.save()
+r_treasure.save()
+r_hall.save()
+r_dead_end.save()
+>>>>>>> b02261b76dafcbb44474335787f6f3699a4b9a16
 
 # # Link rooms together
 # r_outside.connectRooms(r_foyer, "n")
@@ -40,10 +54,23 @@ Room.objects.all().delete()
 # r_narrow.connectRooms(r_treasure, "n")
 # r_treasure.connectRooms(r_narrow, "s")
 
+<<<<<<< HEAD
 # players=Player.objects.all()
 # for p in players:
 #   p.currentRoom=r_outside.id
 #   p.save()
+=======
+r_treasure.connectRooms(r_hall, "n")
+r_hall.connectRooms(r_treasure, "s")
+
+r_hall.connectRooms(r_dead_end, "e")
+r_dead_end.connectRooms(r_hall, "w")
+
+players=Player.objects.all()
+for p in players:
+  p.currentRoom=r_outside.id
+  p.save()
+>>>>>>> b02261b76dafcbb44474335787f6f3699a4b9a16
 
 #Objects
 #objects = [[Room(title="some,numbers", description= "dungeon")] X10]

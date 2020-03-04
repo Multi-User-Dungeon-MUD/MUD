@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'notes',
+    'adventure',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
