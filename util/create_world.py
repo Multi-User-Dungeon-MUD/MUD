@@ -21,17 +21,49 @@ Room.objects.all().delete()
 # chamber! Sadly, it has already been completely emptied by
 # earlier adventurers. The only exit is to the south.""")
 
-<<<<<<< HEAD
-# r_outside.save()
-# r_foyer.save()
-# r_overlook.save()
-# r_narrow.save()
-# r_treasure.save()
-=======
-r_hall = Room(title="hall", description="""As passage.""")
+r_hall = Room(title=" hall ", description="""As passage.""")
 
-r_dead_end = Room(title="Dead End", description="""Nowhere to go.""")
+r_dead_end = Room(title=" Dead End", description="""Nowhere to go.""")
 
+r_e_river = Room(title=" East River ", description=" You do not know how to swim and this River is deep. ")
+
+r_volcano = Room(title=" Volcano ", description=" Supposedly inactive. ")
+
+r_windy_cliff = Room(title=" Windy Cliff ", description=" Don't stand too close to the edge of the cliff. The winds will push you right off into the River below. ")
+
+r_cave_entrance = Room(title=" Cave Entrance ", description=" Dark and mysterious. Something is in there. ")
+
+r_waterfall = Room(title=" Waterfall ", description=" Beautiful and majestic. You cannot climb this waterfall or swim in it's river. ")
+
+r_hell = Room(title=" Hell ", description=" You know why you're here. ")
+
+r_chasm = Room(title=" The Chasm ", description=" The wind in this chasm is overpowering. You drop all of your items because of it. Ahead you can see a cave entrance. ")
+
+r_chamber_of_swords = Room(title=" Chamber of Swords ", description=" Deep into the cave you are now in the Chamber of Swords. Crystals are jutting from the all surfaces.  ")
+
+r_w_river = Room(title=" West River ", description=" River that runs west. You can cross if you are wearing boots. ")
+
+r_ruins = Room(title=" Ruins ", description=" Seems to be several burned remenants of a town that used to be here.")
+
+r_olms_dungeon = Room(title=" Olm's Dungeon ", description=" This European amphiphibian is roughly 100 years young. He is very blind. He pays you no mind.")
+
+r_blind_cave_fish = Room(title=" Blind Cave Fish Tavern ", description=" Run by Mr. Blind-Cave-Fish. He has lived his whole life in this cave and only wishes to help others. ")
+
+r_redtailed_racer = Room(title=" Redtailed Racer's Cavern", description=" A small cavern with a green snake coiled in the middle. Perhaps we should turn around. ")
+
+r_river = Room(title=" Main River ", description=" The main river that feeds the waterfall.  ")
+
+r_road = Room(title=" Road ", description=" Cobblestoned road with a wooden fence running along side of it. ")
+
+r_beach = Room(title=" Beach ", description=" It is sunny year round and smells of the fresh water river ahead.")
+
+r_camp = Room(title=" Camp ", description=" A place to rest.")
+
+r_camp_fire = Room(title=" Camp Fire ", description=" A dangerous element being used for warmth.")
+
+r_locked_door = Room(title=" Locked Door ", description=" A locked door that reads 'Aryas Room'.  ")
+
+r_zeldas_apothacary = Room(title=" Zelda's Apothacary ", description=" Zelda is always ready to help you in your quest, if you have enough gold.")
 
 r_foyer.save()
 r_overlook.save()
@@ -39,7 +71,26 @@ r_narrow.save()
 r_treasure.save()
 r_hall.save()
 r_dead_end.save()
->>>>>>> b02261b76dafcbb44474335787f6f3699a4b9a16
+r_zeldas_apothacary.save()
+r_locked_door.save()
+r_camp_fire.save()
+r_beach.save()
+r_road.save()
+r_river.save()
+r_redtailed_racer.save()
+r_blind_cave_fish.save()
+r_olms_dungeon.save()
+r_ruins.save()
+r_w_river.save()
+r_chamber_of_swords.save()
+r_chasm.save()
+r_hell.save()
+r_waterfall.save()
+r_cave_entrance.save()
+r_windy_cliff.save()
+r_volcano.save()
+r_e_river.save()
+
 
 # # Link rooms together
 # r_outside.connectRooms(r_foyer, "n")
@@ -54,12 +105,6 @@ r_dead_end.save()
 # r_narrow.connectRooms(r_treasure, "n")
 # r_treasure.connectRooms(r_narrow, "s")
 
-<<<<<<< HEAD
-# players=Player.objects.all()
-# for p in players:
-#   p.currentRoom=r_outside.id
-#   p.save()
-=======
 r_treasure.connectRooms(r_hall, "n")
 r_hall.connectRooms(r_treasure, "s")
 
@@ -70,7 +115,6 @@ players=Player.objects.all()
 for p in players:
   p.currentRoom=r_outside.id
   p.save()
->>>>>>> b02261b76dafcbb44474335787f6f3699a4b9a16
 
 #Objects
 #objects = [[Room(title="some,numbers", description= "dungeon")] X10]
