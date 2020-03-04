@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from adventure.models import Player, Room
 
-
 Room.objects.all().delete()
 
 r_outside = Room(title="Outside Cave Entrance",
@@ -25,13 +24,25 @@ r_hall = Room(title="hall", description="""As passage.""")
 
 r_dead_end = Room(title="Dead End", description="""Nowhere to go.""")
 
+r_stairs = Room(title="stairs", description="""go to the balcony""")
 
+r_balcony = Room(title="balcony", description="""Nowhere to go.""")
+
+r_cave = Room(title="cave", description="""Nowhere to go.""")
+
+r_study = Room(title="study", description="""Nowhere to go.""")
+
+r_outside.save()
 r_foyer.save()
 r_overlook.save()
 r_narrow.save()
 r_treasure.save()
 r_hall.save()
 r_dead_end.save()
+r_stairs.save()
+r_balcony.save()
+r_cave.save()
+r_study.save()
 
 # Link rooms together
 r_outside.connectRooms(r_foyer, "n")
@@ -51,6 +62,19 @@ r_hall.connectRooms(r_treasure, "s")
 
 r_hall.connectRooms(r_dead_end, "e")
 r_dead_end.connectRooms(r_hall, "w")
+
+r_dead_end.connectRooms(r_stairs, "e")
+r_stairs.connectRooms(r_dead_end, "w")
+
+
+r_dead_end.connectRooms(r_balcony, "s")
+r_balcony.connectRooms(r_dead_end, "n")
+
+r_stairs.connectRooms(r_cave, "n")
+r_cave.connectRooms(r_stairs, "s")
+
+r_cave.connectRooms(r_study, "w")
+r_study.connectRooms(r_cave, "e")
 
 players=Player.objects.all()
 for p in players:

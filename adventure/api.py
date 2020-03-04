@@ -70,26 +70,8 @@ def say(request):
 @csrf_exempt
 @api_view(["GET"])
 def show_map(request):
-    # data = [
-    # { 'x': "A1", 'y': "A2", 'color': "player" },
-    # { 'x': "A1", 'y': "B2", 'color': "not" },
-    # { 'x': "A1", 'y': "C2", 'color': "not" },
-    # { 'x': "A1", 'y': "E2", 'color': "not" },
-    # { 'x': "A1", 'y': "F2", 'color': "not" },
-    # { 'x': "A1", 'y': "G2", 'color': "not" },
-    # { 'x': "A1", 'y': "H2", 'color': "not" },
-    # { 'x': "A1", 'y': "I2", 'color': "not" },
-    # { 'x': "A1", 'y': "J2", 'color': "not" },
-    # { 'x': "B1", 'y': "A2", 'color': "not" },
-    # { 'x': "B1", 'y': "B2", 'color': "not" },
-    # { 'x': "B1", 'y': "C2", 'color': "not" },
-    # { 'x': "B1", 'y': "D2", 'color': "not" } ]
     data = Room.objects.all()
     roomArr = []
     for i in range(len(data)):
         roomArr.append({'x': data[i].x, 'y': data[i].y, 'n_to': data[i].n_to, 's_to': data[i].s_to, 'e_to': data[i].e_to, 'w_to': data[i].w_to, 'title':data[i].title, 'description':data[i].description,'id':data[i].id })
     return JsonResponse({'data': roomArr}, safe=True)
-
-
-    # r i in range(len(data)):
-    # data[i] = 

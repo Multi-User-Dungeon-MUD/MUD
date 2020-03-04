@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from django.db import connection
 import uuid
 
 
@@ -24,16 +25,24 @@ class Room(models.Model):
         else:
             if direction == "n":
                 self.n_to = destinationRoomID
+                if self.y < destinationRoom.y:
+                    self.y = destinationRoom.y - 1
+                    self.x = destinationRoom.x
             elif direction == "s":
                 self.s_to = destinationRoomID
-                self.y = destinationRoom.y + 1
-                self.x = destinationRoom.x
+                if self.y <= destinationRoom.y:
+                    self.y = destinationRoom.y + 1
+                    self.x = destinationRoom.x
             elif direction == "e":
                 self.e_to = destinationRoomID
+                if self.x < destinationRoom.x:
+                    self.x = destinationRoom.x - 1
+                    self.y = destinationRoom.y
             elif direction == "w":
                 self.w_to = destinationRoomID
-                self.y = destinationRoom.y
-                self.x = destinationRoom.x + 1
+                if self.x <= destinationRoom.x:
+                    self.y = destinationRoom.y
+                    self.x = destinationRoom.x + 1
             else:
                 print("Invalid direction")
                 return
@@ -42,7 +51,6 @@ class Room(models.Model):
         return [p.user.username for p in Player.objects.filter(currentRoom=self.id) if p.id != int(currentPlayerID)]
     def playerUUIDs(self, currentPlayerID):
         return [p.uuid for p in Player.objects.filter(currentRoom=self.id) if p.id != int(currentPlayerID)]
-
 
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -68,6 +76,7 @@ def create_user_player(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_player(sender, instance, **kwargs):
     instance.player.save()
+
 
 
 
