@@ -5,23 +5,60 @@ import random
 Room.objects.all().delete()
 
 fire_room = 0
-for i in range(20):
+for i in range(50):
   newRoom = Room(title=f"Fire Room {fire_room}",
                description="Flames")
   newRoom.save()
   fire_room += 1
 
+def room_gen(rooms):
+    def link_rooms_n_s(room1, room2):
+      room1.connectRooms(room2, 'n')
+      room2.connectRooms(room1, 's')
+      room1.save()
+      room2.save()
+    def link_rooms_s_n(room1, room2):
+      room1.connectRooms(room2, 's')
+      room2.connectRooms(room1, 'n')
+      room1.save()
+      room2.save()
+    def link_rooms_e_w(room1, room2):
+      room1.connectRooms(room2, 'e')
+      room2.connectRooms(room1, 'w')
+      room1.save()
+      room2.save()
+    def link_rooms_w_e(room1, room2):
+      room1.connectRooms(room2, 'w')
+      room2.connectRooms(room1, 'e')
+      room1.save()
+      room2.save()
+    direction1 = ['n']
+    direction2 = ['e', 'w']
+    for i in range(1, 50):
+        if i % 2 != 0:
+          random_choice = random.choice(direction1)
+          if random_choice == direction1[0]:
+            link_rooms_n_s(rooms.get(id=i), rooms.get(id=i + 1))
+          else:
+            link_rooms_s_n(rooms.get(id=i), rooms.get(id=i + 1))
+        else:
+          random_choice = random.choice(direction2)
+          if random_choice == direction2[0]:
+            link_rooms_e_w(rooms.get(id=i), rooms.get(id=i + 1))
+          else:
+            link_rooms_w_e(rooms.get(id=i), rooms.get(id=i + 1))
 
-def link_rooms(room1, room2):
-  room1.connectRooms(room2, 'n')
-  room2.connectRooms(room1, 's')
-  room1.save()
-  room2.save()
+room_gen(Room.objects.all())
   
- 
-for i in range(1, 20):
-  link_rooms(Room.objects.get(id=i), Room.objects.get(id=i + 1))
-  
+random_int = random.randint(1, 20)
+      while random_int in used_int:
+          random_int = random.randint(1, 20)
+      
+      used_int.append(random_int)
+      print(used_int)
+      if i in used_int:
+        pass
+      else:
 
 r_outside = Room(title="Outside Cave Entrance",
                description="North of you, the cave mount beckons")
