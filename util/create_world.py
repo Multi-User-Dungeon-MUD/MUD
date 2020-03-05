@@ -13,33 +13,12 @@ for i in range(20):
 
 
 def link_rooms(room1, room2):
-  setattr(room1, 'n_to', Room.objects.get(id=room2.id).id)
-  setattr(room2, 's_to', Room.objects.get(id=room1.id).id)
+  room1.connectRooms(room2, 'n')
+  room2.connectRooms(room1, 's')
   room1.save()
   room2.save()
-  # if room1.n_to != 0:
-  #   setattr(room1, 'w_to', Room.objects.get(id=room2.id).id)
-  #   setattr(room2, 'e_to', Room.objects.get(id=room1.id).id)
-  # else:
   
-  #if room1 doesn't have a n_to attribute assign
-  #if room1 one already has n_to attribute assign e or w
-  # reverse_dirs = {"n": "s", "s": "n", "e": "w", "w": "e"}
-  # random_integer = random.randint(1, 4)
-  # direction = ''
-  # if random_integer == 1:
-  #   direction = 'n'
-  # elif random_integer == 2:
-  #   direction = 's'
-  # elif random_integer == 3:
-  #   direction = 'e'
-  # elif random_integer == 4:
-  #   direction = 'w'
-  
-  # room1.connectRooms(room2, direction)
-  # room2.connectRooms(room1, reverse_dirs[direction])
-
-
+ 
 for i in range(1, 20):
   link_rooms(Room.objects.get(id=i), Room.objects.get(id=i + 1))
   
@@ -120,4 +99,26 @@ players=Player.objects.all()
 for p in players:
   p.currentRoom=r_outside.id
   p.save()
+
+ # if room1.n_to != 0:
+  #   setattr(room1, 'w_to', Room.objects.get(id=room2.id).id)
+  #   setattr(room2, 'e_to', Room.objects.get(id=room1.id).id)
+  # else:
+  
+  #if room1 doesn't have a n_to attribute assign
+  #if room1 one already has n_to attribute assign e or w
+  # reverse_dirs = {"n": "s", "s": "n", "e": "w", "w": "e"}
+  # random_integer = random.randint(1, 4)
+  # direction = ''
+  # if random_integer == 1:
+  #   direction = 'n'
+  # elif random_integer == 2:
+  #   direction = 's'
+  # elif random_integer == 3:
+  #   direction = 'e'
+  # elif random_integer == 4:
+  #   direction = 'w'
+  
+  # room1.connectRooms(room2, direction)
+  # room2.connectRooms(room1, reverse_dirs[direction])
 
