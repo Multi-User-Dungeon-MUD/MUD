@@ -33,7 +33,7 @@ def room_gen(rooms):
       room1.save()
       room2.save()
     direction1 = ['n']
-    direction2 = ['e', 'w']
+    direction2 = ['e']
     for i in range(1, 50):
         if i % 2 != 0:
           random_choice = random.choice(direction1)

@@ -40,8 +40,10 @@ class Room(models.Model):
                     self.y = destinationRoom.y
             elif direction == "w":
                 self.w_to = destinationRoomID
-                if self.x <= destinationRoom.x:
+                if self.x < destinationRoom.x:
                     self.y = destinationRoom.y
+                    self.x = destinationRoom.x + 1
+                elif self.x == destinationRoom.x:
                     self.x = destinationRoom.x + 1
             else:
                 print("Invalid direction")
