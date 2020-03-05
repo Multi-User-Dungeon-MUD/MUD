@@ -30,7 +30,7 @@ class Room(models.Model):
                     self.x = destinationRoom.x
             elif direction == "s":
                 self.s_to = destinationRoomID
-                if self.y <= destinationRoom.y:
+                if self.y < destinationRoom.y:
                     self.y = destinationRoom.y + 1
                     self.x = destinationRoom.x
             elif direction == "e":
@@ -40,7 +40,7 @@ class Room(models.Model):
                     self.y = destinationRoom.y
             elif direction == "w":
                 self.w_to = destinationRoomID
-                if self.x <= destinationRoom.x:
+                if self.x < destinationRoom.x:
                     self.y = destinationRoom.y
                     self.x = destinationRoom.x + 1
             else:
