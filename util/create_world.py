@@ -5,7 +5,7 @@ import random
 Room.objects.all().delete()
 
 fire_room = 0
-for i in range(50):
+for i in range(150):
   newRoom = Room(title=f"Fire Room {fire_room}",
                description="Flames")
   newRoom.save()
@@ -32,9 +32,10 @@ def room_gen(rooms):
       room2.connectRooms(room1, 'e')
       room1.save()
       room2.save()
-    direction1 = ['n']
-    direction2 = ['e']
-    for i in range(1, 50):
+    direction1 = ['n', 's']
+    direction2 = ['e', 'w']
+    for i in range(1, 150):
+        # if i is odd
         if i % 2 != 0:
           random_choice = random.choice(direction1)
           if random_choice == direction1[0]:

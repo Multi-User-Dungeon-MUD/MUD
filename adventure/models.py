@@ -31,8 +31,11 @@ class Room(models.Model):
             elif direction == "s":
                 self.s_to = destinationRoomID
                 if self.y <= destinationRoom.y:
+                    temp = self.x
                     self.y = destinationRoom.y + 1
                     self.x = destinationRoom.x
+                    if self.x < temp:
+                        self.x = temp
             elif direction == "e":
                 self.e_to = destinationRoomID
                 if self.x < destinationRoom.x:
@@ -40,11 +43,12 @@ class Room(models.Model):
                     self.y = destinationRoom.y
             elif direction == "w":
                 self.w_to = destinationRoomID
-                if self.x < destinationRoom.x:
+                if self.x <= destinationRoom.x:
+                    temp = self.y
                     self.y = destinationRoom.y
                     self.x = destinationRoom.x + 1
-                elif self.x == destinationRoom.x:
-                    self.x = destinationRoom.x + 1
+                    if self.y < temp:
+                        self.y = temp
             else:
                 print("Invalid direction")
                 return
